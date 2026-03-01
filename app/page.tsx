@@ -252,7 +252,7 @@ function Navbar({ active, onNav }: NavbarProps) {
   );
 }
 
-function HeroSection(): JSX.Element {
+function HeroSection(() {
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0.5, y: 0.5 });
 
   return (
@@ -435,7 +435,7 @@ function HeroSection(): JSX.Element {
   );
 }
 
-function AboutSection(): JSX.Element {
+function AboutSection(() {
   const [lang, setLang] = useState<"en" | "ja">("en");
 
   const story = {
@@ -711,7 +711,7 @@ function AboutSection(): JSX.Element {
   );
 }
 
-function EventsSection(): JSX.Element {
+function EventsSection(() {
   const tagColors: Record<EventItem["tag"], { bg: string; text: string }> = {
     Language: { bg: "rgba(255,140,0,0.12)", text: "#FF8C00" },
     Tech: { bg: "rgba(0,180,255,0.12)", text: "#00B4FF" },
@@ -796,7 +796,7 @@ function EventsSection(): JSX.Element {
   );
 }
 
-function GallerySection(): JSX.Element {
+function GallerySection(() {
   return (
     <section id="Gallery" style={{ background: "#0D0806", padding: "100px 24px", position: "relative" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -859,7 +859,7 @@ function GallerySection(): JSX.Element {
   );
 }
 
-function JoinSection(): JSX.Element {
+function JoinSection(() {
   return (
     <section id="Join" style={{ background: "#0A0604", padding: "100px 24px", position: "relative" }}>
       <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
@@ -950,7 +950,7 @@ function JoinSection(): JSX.Element {
   );
 }
 
-function Footer(): JSX.Element {
+function Footer(() {
   return (
     <footer style={{
       background: "#080504",
@@ -992,7 +992,7 @@ function Footer(): JSX.Element {
   );
 }
 
-export default function ChitChatCanada(): JSX.Element {
+export default function ChitChatCanada(() {
   const [activeSection, setActiveSection] = useState<Section>("Home");
 
   const handleNav = (section: Section): void => {
@@ -1030,4 +1030,4 @@ export default function ChitChatCanada(): JSX.Element {
       <Footer />
     </div>
   );
-}
+}　　　　　　　　　　　　　
