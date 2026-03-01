@@ -106,9 +106,9 @@ const features: FeatureItem[] = [
   },
 ];
 
-function useInView(threshold: number = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
+function useInView(threshold: number = 0.15) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -252,7 +252,7 @@ function Navbar({ active, onNav }: NavbarProps) {
   );
 }
 
-function HeroSection(() {
+function HeroSection() {
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0.5, y: 0.5 });
 
   return (
@@ -435,7 +435,7 @@ function HeroSection(() {
   );
 }
 
-function AboutSection(() {
+function AboutSection() {
   const [lang, setLang] = useState<"en" | "ja">("en");
 
   const story = {
@@ -711,7 +711,7 @@ function AboutSection(() {
   );
 }
 
-function EventsSection(() {
+function EventsSection() {
   const tagColors: Record<EventItem["tag"], { bg: string; text: string }> = {
     Language: { bg: "rgba(255,140,0,0.12)", text: "#FF8C00" },
     Tech: { bg: "rgba(0,180,255,0.12)", text: "#00B4FF" },
@@ -796,7 +796,7 @@ function EventsSection(() {
   );
 }
 
-function GallerySection(() {
+function GallerySection() {
   return (
     <section id="Gallery" style={{ background: "#0D0806", padding: "100px 24px", position: "relative" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -859,7 +859,7 @@ function GallerySection(() {
   );
 }
 
-function JoinSection(() {
+function JoinSection() {
   return (
     <section id="Join" style={{ background: "#0A0604", padding: "100px 24px", position: "relative" }}>
       <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
@@ -950,7 +950,7 @@ function JoinSection(() {
   );
 }
 
-function Footer(() {
+function Footer() {
   return (
     <footer style={{
       background: "#080504",
@@ -992,7 +992,7 @@ function Footer(() {
   );
 }
 
-export default function ChitChatCanada(() {
+export default function ChitChatCanada() {
   const [activeSection, setActiveSection] = useState<Section>("Home");
 
   const handleNav = (section: Section): void => {
@@ -1030,4 +1030,4 @@ export default function ChitChatCanada(() {
       <Footer />
     </div>
   );
-}　　　　　　　　　　　　　
+}c
