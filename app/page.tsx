@@ -107,7 +107,7 @@ const features: FeatureItem[] = [
 ];
 
 function useInView(threshold: number = 0.15) {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
@@ -119,7 +119,7 @@ function useInView(threshold: number = 0.15) {
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
-  return [ref, visible];
+  return [ref, visible] as const;
 }
 
 interface AnimatedSectionProps {
@@ -1006,7 +1006,7 @@ export default function ChitChatCanada() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            setActiveSection(entry.target.id as Section);
           }
         });
       },
@@ -1030,4 +1030,4 @@ export default function ChitChatCanada() {
       <Footer />
     </div>
   );
-}c
+}
