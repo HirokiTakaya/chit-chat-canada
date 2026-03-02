@@ -94,16 +94,16 @@ function AnimatedSection({ children, delay = 0, className = "" }: { children: Re
 function LangToggle() {
   const { lang, setLang } = useLang();
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 32, padding: 4 }}>
+    <div style={{ display: "inline-flex", alignItems: "center", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 32, padding: 3 }}>
       {(["en", "ja"] as const).map((l) => (
         <button key={l} onClick={() => setLang(l)} style={{
-          display: "flex", alignItems: "center", gap: 8, padding: "10px 24px", borderRadius: 28, border: "none", cursor: "pointer",
+          display: "flex", alignItems: "center", gap: 4, padding: "7px 14px", borderRadius: 28, border: "none", cursor: "pointer",
           background: lang === l ? "linear-gradient(135deg, rgba(255,140,0,0.2), rgba(255,85,0,0.15))" : "transparent",
           boxShadow: lang === l ? "0 2px 12px rgba(255,140,0,0.15)" : "none",
-          transition: "all 0.3s ease", fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 600,
+          transition: "all 0.3s ease", fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600,
           color: lang === l ? "#FF8C00" : "rgba(255,255,255,0.4)",
         }}>
-          <span style={{ fontSize: 16 }}>{l === "en" ? "🇬🇧" : "🇯🇵"}</span>
+          <span style={{ fontSize: 14 }}>{l === "en" ? "🇬🇧" : "🇯🇵"}</span>
           {l === "en" ? "EN" : "JP"}
         </button>
       ))}
@@ -157,9 +157,12 @@ function Navbar({ active, onNav }: { active: Section; onNav: (s: Section) => voi
           <div style={{ marginLeft: 8 }}><LangToggle /></div>
         </div>
 
-        <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", background: "none", border: "none", color: "#FF8C00", fontSize: 28, cursor: "pointer", padding: 4 }}>
-          {menuOpen ? "✕" : "☰"}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <LangToggle />
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", background: "none", border: "none", color: "#FF8C00", fontSize: 28, cursor: "pointer", padding: 4 }}>
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
@@ -174,7 +177,6 @@ function Navbar({ active, onNav }: { active: Section; onNav: (s: Section) => voi
               {navLabels[s][lang]}
             </button>
           ))}
-          <div style={{ paddingTop: 8 }}><LangToggle /></div>
         </div>
       )}
     </nav>
