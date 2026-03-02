@@ -18,21 +18,11 @@ type Section = (typeof SECTIONS)[number];
 
 interface BiText { en: string; ja: string }
 
-interface EventItem {
-  title: BiText; date: BiText; time: string; location: BiText;
-  tag: "Language" | "Tech" | "Culture" | "Career"; emoji: string;
-}
 interface StatItem { label: BiText; value: string; icon: string }
 interface GalleryItem { bg: string; label: BiText; icon: string }
 interface FeatureItem { icon: string; title: BiText; desc: BiText }
 
 // ─── i18n Data ─────────────────────────────────────────────────
-const events: EventItem[] = [
-  { title: { en: "Weekly English & Japanese Exchange", ja: "週刊 英語・日本語交流会" }, date: { en: "Every Saturday", ja: "毎週土曜日" }, time: "2:00 PM - 4:00 PM", location: { en: "Vancouver Public Library", ja: "バンクーバー公立図書館" }, tag: "Language", emoji: "🗣️" },
-  { title: { en: "Coding & Tech Meetup", ja: "コーディング＆テック勉強会" }, date: { en: "Every 2nd Wednesday", ja: "隔週水曜日" }, time: "6:30 PM - 8:30 PM", location: { en: "Downtown Co-working Space", ja: "ダウンタウン コワーキングスペース" }, tag: "Tech", emoji: "💻" },
-  { title: { en: "Cultural Exchange Night", ja: "異文化交流ナイト" }, date: { en: "Monthly - Last Friday", ja: "月末金曜日" }, time: "7:00 PM - 9:00 PM", location: { en: "Gastown Café", ja: "ガスタウン カフェ" }, tag: "Culture", emoji: "🌏" },
-  { title: { en: "Career & Learning Q&A", ja: "キャリア＆学習 Q&A" }, date: { en: "Bi-weekly Sunday", ja: "隔週日曜日" }, time: "1:00 PM - 3:00 PM", location: { en: "Online (Zoom)", ja: "オンライン (Zoom)" }, tag: "Career", emoji: "📈" },
-];
 
 const stats: StatItem[] = [
   { label: { en: "Members", ja: "メンバー" }, value: "4,700+", icon: "👥" },
@@ -347,12 +337,48 @@ function AboutSection() {
 }
 
 // ─── Events ────────────────────────────────────────────────────
+interface MeetupEvent {
+  title: string;
+  start: string;
+  end: string;
+  location: string;
+  url: string;
+  description: string;
+}
+
+function formatEventDate(dateStr: string, lang: Lang): string {
+  try {
+    const date = new Date(dateStr);
+    if (lang === "ja") {
+      return date.toLocaleDateString("ja-JP", { month: "long", day: "numeric", weekday: "short" });
+    }
+    return date.toLocaleDateString("en-CA", { month: "short", day: "numeric", weekday: "short" });
+  } catch {
+    return dateStr;
+  }
+}
+
+function formatEventTime(dateStr: string): string {
+  try {
+    const date = new Date(dateStr);
+    return date.toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit", hour12: true });
+  } catch {
+    return "";
+  }
+}
+
 function EventsSection() {
   const { lang } = useLang();
-  const tagColors: Record<EventItem["tag"], { bg: string; text: string }> = {
-    Language: { bg: "rgba(255,140,0,0.12)", text: "#FF8C00" }, Tech: { bg: "rgba(0,180,255,0.12)", text: "#00B4FF" },
-    Culture: { bg: "rgba(255,60,120,0.12)", text: "#FF3C78" }, Career: { bg: "rgba(0,220,130,0.12)", text: "#00DC82" },
-  };
+  const [events, setEvents] = useState<MeetupEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/events")
+      .then((res) => res.json())
+      .then((data) => { setEvents(data.events || []); setLoading(false); })
+      .catch(() => { setError(true); setLoading(false); });
+  }, []);
 
   return (
     <section id="Events" style={{ background: "#0A0604", padding: "100px 24px", position: "relative" }}>
@@ -367,23 +393,71 @@ function EventsSection() {
             </h2>
           </div>
         </AnimatedSection>
-        <div style={{ display: "grid", gap: 16 }}>
-          {events.map((ev, i) => (
-            <AnimatedSection key={ev.title.en} delay={i * 0.1}>
-              <div style={{ display: "flex", alignItems: "center", gap: 20, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 16, padding: "24px 28px", transition: "all 0.3s ease", cursor: "pointer", flexWrap: "wrap" }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,140,0,0.25)"; e.currentTarget.style.background = "rgba(255,140,0,0.03)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"; e.currentTarget.style.background = "rgba(255,255,255,0.02)"; }}
+
+        {loading ? (
+          <div style={{ textAlign: "center", padding: "48px 0" }}>
+            <div style={{ display: "inline-block", width: 40, height: 40, border: "3px solid rgba(255,140,0,0.15)", borderTopColor: "#FF8C00", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+          </div>
+        ) : error || events.length === 0 ? (
+          <AnimatedSection>
+            <div style={{ textAlign: "center", padding: "48px 24px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 20 }}>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", margin: "0 0 24px" }}>
+                {lang === "en" ? "Check out our latest events on Meetup!" : "最新のイベントはMeetupでチェック！"}
+              </p>
+              <a href="https://www.meetup.com/an-effective-language-practice-english-japanese/" target="_blank" rel="noopener noreferrer"
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "linear-gradient(135deg, #FF8C00, #E06000)", color: "#fff", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: 16, padding: "14px 32px", borderRadius: 40, textDecoration: "none", boxShadow: "0 4px 20px rgba(255,140,0,0.3)", transition: "all 0.3s ease" }}
+                onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"}
+                onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}
               >
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(255,140,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>{ev.emoji}</div>
-                <div style={{ flex: 1, minWidth: 200 }}>
-                  <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 18, fontWeight: 600, color: "#fff", margin: "0 0 6px" }}>{ev.title[lang]}</h3>
-                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: 0 }}>{ev.date[lang]} · {ev.time} · {ev.location[lang]}</p>
-                </div>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 600, padding: "6px 14px", borderRadius: 20, background: tagColors[ev.tag]?.bg, color: tagColors[ev.tag]?.text }}>{ev.tag}</span>
+                {lang === "en" ? "View on Meetup ↗" : "Meetupで見る ↗"}
+              </a>
+            </div>
+          </AnimatedSection>
+        ) : (
+          <div style={{ display: "grid", gap: 16 }}>
+            {events.map((ev, i) => (
+              <AnimatedSection key={`${ev.title}-${ev.start}`} delay={i * 0.1}>
+                <a href={ev.url || "https://www.meetup.com/an-effective-language-practice-english-japanese/"} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "flex", alignItems: "center", gap: 20, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 16, padding: "24px 28px", transition: "all 0.3s ease", cursor: "pointer", flexWrap: "wrap", textDecoration: "none" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,140,0,0.25)"; e.currentTarget.style.background = "rgba(255,140,0,0.03)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"; e.currentTarget.style.background = "rgba(255,255,255,0.02)"; }}
+                >
+                  <div style={{ width: 56, minHeight: 56, borderRadius: 14, background: "rgba(255,140,0,0.1)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: "8px 4px" }}>
+                    <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700, color: "#FF8C00", textTransform: "uppercase" }}>
+                      {new Date(ev.start).toLocaleDateString("en", { month: "short" })}
+                    </span>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: "#fff", lineHeight: 1 }}>
+                      {new Date(ev.start).getDate()}
+                    </span>
+                  </div>
+                  <div style={{ flex: 1, minWidth: 200 }}>
+                    <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 18, fontWeight: 600, color: "#fff", margin: "0 0 6px" }}>{ev.title}</h3>
+                    <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: 0 }}>
+                      {formatEventDate(ev.start, lang)} · {formatEventTime(ev.start)}
+                      {ev.location ? ` · ${ev.location}` : ""}
+                    </p>
+                  </div>
+                  <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600, color: "#FF8C00", flexShrink: 0 }}>
+                    ↗
+                  </span>
+                </a>
+              </AnimatedSection>
+            ))}
+
+            <AnimatedSection delay={events.length * 0.1}>
+              <div style={{ textAlign: "center", marginTop: 16 }}>
+                <a href="https://www.meetup.com/an-effective-language-practice-english-japanese/" target="_blank" rel="noopener noreferrer"
+                  style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, fontWeight: 600, color: "#FF8C00", textDecoration: "none", transition: "opacity 0.2s" }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >
+                  {lang === "en" ? "View all events on Meetup ↗" : "すべてのイベントをMeetupで見る ↗"}
+                </a>
               </div>
             </AnimatedSection>
-          ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
