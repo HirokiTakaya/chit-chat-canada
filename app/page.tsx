@@ -47,22 +47,68 @@ const features: FeatureItem[] = [
   { icon: "🌏", title: { en: "Cultural Exchange", ja: "異文化交流" }, desc: { en: "Experience diverse perspectives from 30+ countries. Build genuine friendships across cultures.", ja: "30カ国以上の多様な視点に触れ、文化を超えた本物の友情を築きましょう。" } },
 ];
 
-const founderStory = {
+const communityIntro = {
   en: {
-    p1: `Hiroki is a dedicated Brazilian Jiu-Jitsu instructor based in Vancouver, Canada. He leads both on and off the mats — as a BJJ instructor, software developer, ESL coach for Japanese students, and meetup community organizer.`,
-    p2: `Having traveled to 4 English-speaking countries to train at international BJJ camps, Hiroki is a truly passionate educator at heart. In Japan, he used his English teaching credential (Middle & High School, grades 7–12) to provide compassionate support for students who felt estranged and outcast from Japanese society.`,
-    p3: `Following his dream of educating from the human spirit, Hiroki came to Vancouver, where he tackled a Post-Degree programming and design program at a local public college. But as a student, his days were consumed by studying — no time to earn money, savings shrinking day by day. He felt isolated.`,
-    p4: `That experience sparked a realization: studying hard was absolutely essential — but it wasn't enough on its own. He also needed community. A place to practice languages, share cultures, and support one another — without it costing a thing. That's exactly why Chit-Chat Canada is free for students.`,
-    p5: `Today, Hiroki instructs Brazilian Jiu-Jitsu in Vancouver, guiding students of all levels while building software and running community meetups. Whether he's teaching a technique on the mats or organizing a language exchange event, his driving philosophy remains the same: growth through genuine human connection.`,
+    eyebrow: "Community Leadership",
+    titlePrefix: "Led with",
+    titleAccent: "Warmth",
+    titleSuffix: "and Care",
+    desc: "Chit-Chat Canada is a bilingual community in Vancouver where students, newcomers, and locals can meet, practice languages, and build real connections through relaxed, welcoming events.",
   },
   ja: {
-    p1: `Hirokiはバンクーバーでブラジリアン柔術の指導者として活躍しています。カナダ・バンクーバーを拠点に、柔術指導者、ソフトウェアエンジニア、日本人向けESLコーチ、そしてMeetupコミュニティの主催者として、マットの上でも外でもリーダーシップを発揮しています。`,
-    p2: `4つの英語圏の国を巡り、国際的なBJJトレーニングキャンプに参加してきたHirokiは、根っからの教育者です。日本では中学・高校（7〜12年生）の英語教員免許を活かし、日本社会で疎外感を感じていた生徒たちに寄り添い、心のこもったサポートを提供してきました。`,
-    p3: `「人間の精神から教育する」という夢を追い、Hirokiはバンクーバーへ。地元の公立カレッジでプログラミングとデザインのPost-Degreeプログラムに挑みました。しかし学生時代は勉強に追われる毎日 — お金を稼ぐ時間もなく、貯金は減る一方。孤独を感じる日々でした。`,
-    p4: `その経験から気づいたこと — 勉強に全力を注ぐのは当然のこと。でもそれだけでは足りなかった。同時に「居場所」も必要だったということ。言語を練習し、文化を共有し、支え合える場所。しかもお金がかからない場所。だからChit-Chat Canadaは学生無料なんです。`,
-    p5: `現在、Hirokiはバンクーバーでブラジリアン柔術の指導者として、あらゆるレベルの生徒を導きながら、ソフトウェア開発とコミュニティMeetupの運営にも力を注いでいます。マットの上でテクニックを教える時も、言語交流イベントを主催する時も、根底にある信念は変わりません — 「人との繋がりを通じて成長する」こと。`,
+    eyebrow: "コミュニティ運営",
+    titlePrefix: "温かさと",
+    titleAccent: "安心感",
+    titleSuffix: "を大切に",
+    desc: "Chit-Chat Canadaは、バンクーバーで学生・留学生・ローカルの方々が出会い、言語を練習し、自然なつながりを作れるバイリンガルコミュニティです。",
   },
 };
+
+const hironaProfile = {
+  name: "Hirona",
+  image: "/hirona.jpg",
+  instagramUrl: "https://www.instagram.com/usaxusa/", // Replace with Hirona's official Instagram URL
+  en: {
+    role: "Co-Manager",
+    tagline: "Community Management & Event Operations",
+    badges: ["Former System Engineer", "Business Management Co-op Student", "Community Organizer"],
+    paragraphs: [
+      "Hirona serves as the Co-Manager of Chit-Chat Canada and plays an important role in supporting our community, events, and day-to-day operations.",
+      "Before coming to Canada, she worked in Japan as a system engineer. With a desire to broaden her perspective and gain international experience, she decided to study abroad and is currently enrolled in a Co-op program, majoring in Business Management.",
+      "Hirona enjoys meeting new people and connecting with individuals from different cultural backgrounds. Her friendly personality and interest in community building naturally led her to become involved with Chit-Chat as an organizer.",
+      "Through her experience supporting events, she became interested in contributing more deeply to the management side of the community. As Co-Manager, she helps create a welcoming environment where students, newcomers, and locals can feel comfortable joining, speaking, and making new connections.",
+      "With her background in technology, business, and cross-cultural communication, Hirona is excited to help Chit-Chat Canada grow into an even more engaging, inclusive, and lively community.",
+    ],
+  },
+  ja: {
+    role: "Co-Manager",
+    tagline: "コミュニティ運営・イベントマネジメント",
+    badges: ["元システムエンジニア", "Business Management専攻", "Community Organizer"],
+    paragraphs: [
+      "Chit-Chat CanadaでCo-Managerを務めております、Hironaです。",
+      "日本ではシステムエンジニアとして働いていましたが、より広い視野を身につけ、海外での経験を積みたいと思い、留学を決意しました。現在はCo-opプログラムでビジネスマネジメントを専攻しています。",
+      "人と話すことが好きで、さまざまな国や文化的背景を持つ方々と交流したいという思いから、Chit-Chatのオーガナイザーとして活動を始めました。",
+      "イベントをサポートする中で、参加者が安心して交流できる雰囲気づくりや、コミュニティ運営の大切さに興味を持つようになりました。現在はCo-Managerとして、イベント運営、参加者とのコミュニケーション、コミュニティづくり、そしてChit-Chat Canadaのさらなる成長をサポートしています。",
+      "テクノロジー、ビジネス、そして異文化交流の経験を活かしながら、Chit-Chat Canadaをより温かく、楽しく、活気のあるコミュニティにしていけるよう頑張ります。よろしくお願いします。",
+    ],
+  },
+};
+
+const founderSupport = {
+  en: {
+    title: "Founded by Hiroki Takaya",
+    role: "Founder & Owner",
+    desc: "Chit-Chat Canada was founded by Hiroki Takaya with the goal of creating a welcoming space where people in Vancouver can connect through language, culture, and shared experiences.",
+    note: "Hiroki continues to support the community behind the scenes while Hirona helps lead the community-facing management and event operations.",
+  },
+  ja: {
+    title: "Founded by Hiroki Takaya",
+    role: "Founder & Owner",
+    desc: "Chit-Chat Canadaは、バンクーバーで人々が言語・文化・経験を通じて自然につながれる場所を作りたいという思いから、Hiroki Takayaによって立ち上げられました。",
+    note: "HirokiはFounder / Ownerとしてコミュニティを支えながら、HironaがCo-Managerとして参加者に近い立場で運営・イベント管理をサポートしています。",
+  },
+};
+
 
 // ─── Hooks ─────────────────────────────────────────────────────
 function useInView(threshold: number = 0.15) {
@@ -114,7 +160,7 @@ function LangToggle() {
 // ─── Nav Labels ────────────────────────────────────────────────
 const navLabels: Record<Section, BiText> = {
   Home: { en: "Home", ja: "ホーム" },
-  About: { en: "About", ja: "私たちについて" },
+  About: { en: "Team", ja: "チーム" },
   Events: { en: "Events", ja: "イベント" },
   Gallery: { en: "Gallery", ja: "ギャラリー" },
   Join: { en: "Join", ja: "参加する" },
@@ -207,7 +253,7 @@ function HeroSection() {
         </div>
 
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(42px, 7vw, 84px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, margin: "0 0 24px", animation: "fadeInUp 0.8s ease 0.2s both" }}>
-          {lang === "en" ? (<>Connect, Learn,{" "}<span style={{ background: "linear-gradient(135deg, #FF8C00, #FF5500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 4s ease infinite" }}>Grow Together</span></>) : (<>繋がり、学び、{" "}<span style={{ background: "linear-gradient(135deg, #FF8C00, #FF5500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 4s ease infinite" }}>共に成長する</span></>)}
+          {lang === "en" ? (<>Connect, Learn,{" "}<span style={{ background: "linear-gradient(135deg, #FF8C00, #FF5500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 4s ease infinite" }}>Grow Together</span></>) : (<>繋がり、学び,{" "}<span style={{ background: "linear-gradient(135deg, #FF8C00, #FF5500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundSize: "200% 200%", animation: "gradientShift 4s ease infinite" }}>共に成長する</span></>)}
         </h1>
 
         <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(16px, 2.2vw, 20px)", color: "rgba(255,255,255,0.6)", maxWidth: 600, margin: "0 auto 48px", lineHeight: 1.7, animation: "fadeInUp 0.8s ease 0.4s both" }}>
@@ -256,63 +302,90 @@ function HeroSection() {
 // ─── About ─────────────────────────────────────────────────────
 function AboutSection() {
   const { lang } = useLang();
-  const s = founderStory[lang];
+  const intro = communityIntro[lang];
+  const h = hironaProfile[lang];
+  const founder = founderSupport[lang];
 
   return (
-    <section id="About" style={{ background: "#0D0806", padding: "100px 24px", position: "relative" }}>
+    <section id="About" style={{ background: "#0D0806", padding: "100px 24px", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(255,140,0,0.2), transparent)" }} />
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ position: "absolute", top: 120, right: -120, width: 320, height: 320, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,140,0,0.08), transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ maxWidth: 1120, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <AnimatedSection>
           <div style={{ textAlign: "center", marginBottom: 72 }}>
             <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600, color: "#FF8C00", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-              {lang === "en" ? "Our Story" : "私たちのストーリー"}
+              {intro.eyebrow}
             </span>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 700, color: "#fff", margin: "16px 0 0", lineHeight: 1.15 }}>
-              {lang === "en" ? (<>How It All <span style={{ color: "#FF8C00" }}>Started</span></>) : (<>すべての<span style={{ color: "#FF8C00" }}>始まり</span></>)}
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(34px, 5vw, 56px)", fontWeight: 700, color: "#fff", margin: "16px 0 18px", lineHeight: 1.15 }}>
+              {intro.titlePrefix}{" "}<span style={{ color: "#FF8C00" }}>{intro.titleAccent}</span>{" "}{intro.titleSuffix}
             </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.58)", lineHeight: 1.8, maxWidth: 720, margin: "0 auto" }}>
+              {intro.desc}
+            </p>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.15}>
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 340px) 1fr", gap: 48, alignItems: "start" }} className="founder-grid">
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
-              <div style={{ width: 200, height: 200, borderRadius: "50%", boxShadow: "0 8px 40px rgba(255,140,0,0.25)", position: "relative", overflow: "hidden", border: "3px solid rgba(255,140,0,0.3)" }}>
-                <img src="/hiroki.jpg" alt="Hiroki Takaya" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
-              </div>
-              <div style={{ textAlign: "center" }}>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, fontWeight: 700, color: "#fff", margin: "0 0 4px" }}>Hiroki Takaya</h3>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "#FF8C00", fontWeight: 500, margin: "0 0 16px" }}>
-                  {lang === "en" ? "Founder & Owner" : "創設者 & オーナー"}
+          <div className="team-grid" style={{ display: "grid", gridTemplateColumns: "minmax(320px, 0.92fr) minmax(0, 1.08fr)", gap: 36, alignItems: "stretch" }}>
+            <div className="hirona-card" style={{ background: "linear-gradient(145deg, rgba(255,140,0,0.13), rgba(255,255,255,0.025))", border: "1px solid rgba(255,140,0,0.22)", borderRadius: 28, padding: 28, position: "relative", overflow: "hidden", boxShadow: "0 18px 60px rgba(0,0,0,0.22)" }}>
+              <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 25% 15%, rgba(255,255,255,0.08), transparent 42%)", pointerEvents: "none" }} />
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <div style={{ width: "100%", aspectRatio: "4 / 5", borderRadius: 24, overflow: "hidden", border: "2px solid rgba(255,140,0,0.32)", boxShadow: "0 12px 36px rgba(255,140,0,0.18)", marginBottom: 24, background: "rgba(255,255,255,0.04)" }}>
+                  <img src={hironaProfile.image} alt="Hirona, Co-Manager of Chit-Chat Canada" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                </div>
+
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,140,0,0.16)", border: "1px solid rgba(255,140,0,0.28)", color: "#FF8C00", fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700, padding: "8px 14px", borderRadius: 999, marginBottom: 14 }}>
+                  ✨ {h.role}
+                </span>
+
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(34px, 5vw, 50px)", fontWeight: 800, color: "#fff", margin: "0 0 8px", lineHeight: 1 }}>
+                  {hironaProfile.name}
+                </h3>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.68)", fontWeight: 500, margin: "0 0 22px" }}>
+                  {h.tagline}
                 </p>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
-                {[
-                  { en: "🥋 BJJ Instructor", ja: "🥋 柔術指導者" },
-                  { en: "💻 Software Engineer", ja: "💻 ソフトウェアエンジニア" },
-                  { en: "📚 Licensed English Teacher", ja: "📚 英語教員免許保持" },
-                  { en: "🌏 ESL Coach", ja: "🌏 ESLコーチ" },
-                  { en: "🍁 Community Organizer", ja: "🍁 コミュニティ主催者" },
-                ].map((role) => (
-                  <div key={role.en} style={{ background: "rgba(255,140,0,0.08)", border: "1px solid rgba(255,140,0,0.15)", borderRadius: 12, padding: "8px 16px", textAlign: "center" }}>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>{lang === "en" ? role.en : role.ja}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: "flex", gap: 12 }}>
-                <a href="https://www.instagram.com/japaneseflash" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 10, padding: "8px 14px", textDecoration: "none", fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.5)", transition: "all 0.2s ease" }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,140,0,0.3)"; e.currentTarget.style.color = "#FF8C00"; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.color = "rgba(255,255,255,0.5)"; }}
+
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
+                  {h.badges.map((badge) => (
+                    <span key={badge} style={{ background: "rgba(0,0,0,0.22)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 999, color: "rgba(255,255,255,0.78)", fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 600, padding: "8px 12px" }}>
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <a href={hironaProfile.instagramUrl} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "10px 16px", textDecoration: "none", fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.72)", transition: "all 0.2s ease" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,140,0,0.35)"; e.currentTarget.style.color = "#FF8C00"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "rgba(255,255,255,0.72)"; }}
                 >📸 Instagram</a>
               </div>
             </div>
 
-            <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 20, padding: "40px 36px", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, width: 4, height: "100%", background: "linear-gradient(180deg, #FF8C00, #FF5500)", borderRadius: "4px 0 0 4px" }} />
-              <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                {[s.p1, s.p2, s.p3, s.p4, s.p5].map((p, i) => (
-                  <p key={`${lang}-${i}`} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.85, margin: 0 }}>{p}</p>
-                ))}
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 24, padding: "38px 34px", position: "relative", overflow: "hidden", flex: 1 }}>
+                <div style={{ position: "absolute", top: 0, left: 0, width: 4, height: "100%", background: "linear-gradient(180deg, #FF8C00, #FF5500)", borderRadius: "4px 0 0 4px" }} />
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700, color: "#FF8C00", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                  {lang === "en" ? "Meet Our Co-Manager" : "Co-Manager紹介"}
+                </span>
+                <div style={{ display: "flex", flexDirection: "column", gap: 18, marginTop: 20 }}>
+                  {h.paragraphs.map((p, i) => (
+                    <p key={`${lang}-hirona-${i}`} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.85, margin: 0 }}>{p}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ background: "rgba(255,255,255,0.018)", border: "1px solid rgba(255,255,255,0.055)", borderRadius: 20, padding: "26px 28px" }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                  <div style={{ width: 46, height: 46, borderRadius: "50%", background: "rgba(255,140,0,0.1)", border: "1px solid rgba(255,140,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 20 }}>
+                    🍁
+                  </div>
+                  <div>
+                    <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 17, fontWeight: 700, color: "#fff", margin: "0 0 4px" }}>{founder.title}</h4>
+                    <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: "#FF8C00", fontWeight: 600, margin: "0 0 12px" }}>{founder.role}</p>
+                    <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.52)", lineHeight: 1.75, margin: "0 0 10px" }}>{founder.desc}</p>
+                    <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.42)", lineHeight: 1.75, margin: 0 }}>{founder.note}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -333,10 +406,11 @@ function AboutSection() {
           ))}
         </div>
       </div>
-      <style>{`@media (max-width: 768px) { .founder-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }`}</style>
+      <style>{`@media (max-width: 860px) { .team-grid { grid-template-columns: 1fr !important; gap: 28px !important; } .hirona-card { max-width: 520px !important; margin: 0 auto !important; } }`}</style>
     </section>
   );
 }
+
 
 // ─── Events ────────────────────────────────────────────────────
 interface MeetupEvent {
